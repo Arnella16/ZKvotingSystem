@@ -1,24 +1,20 @@
 pragma circom 2.0.0;
 
-// This circuit proves:
-// 1. Voter knows secret key a
-// 2. g^a mod p equals their public key
-// 3. Their age >= 18
-
 include "circomlib/circuits/comparators.circom";
 include "circomlib/circuits/poseidon.circom";
 
-template AgeVerify() {
-    // Private inputs (only voter knows these)
-    signal input secretKey;      // voter's secret 'a'
-    signal input age;            // voter's real age
+template HybridVoting() {
+    // Private inputs (voter only)
+    signal input secretKey;          // voter's secret
+    signal input age;                // voter's age
+    signal input dilithiumPubKey[16]; // Dilithium public key (chunked)
 
-    // Public inputs (everyone can see these)
-    signal input publicKey;      // g^a mod p
-    signal input ageCommitment;  // hash of age (set at registration)
-    signal input minAge;         // 18
+    // Public inputs (everyone sees)
+    signal input publicKey;          // Poseidon(secretKey)
+    signal input ageCommitment;      // Poseidon(age, secretKey)
+    signal input dilithiumKeyHash;   // Poseidon(dilithiumPubKey) - on-chain registered
+    signal input minAge;             // 18
 
-    // Output
     signal output valid;
 
     // Constraint 1: age >= 18
@@ -33,13 +29,19 @@ template AgeVerify() {
     hasher.inputs[1] <== secretKey;
     hasher.out === ageCommitment;
 
-    // Constraint 3: public key = hash(secretKey)
+    // Constraint 3: public key matches
     component pkHasher = Poseidon(1);
     pkHasher.inputs[0] <== secretKey;
     pkHasher.out === publicKey;
 
-    // Output valid
+    // Constraint 4: Dilithium public key matches on-chain commitment
+    component dilHasher = Poseidon(16);
+    for (var i = 0; i < 16; i++) {
+        dilHasher.inputs[i] <== dilithiumPubKey[i];
+    }
+    dilHasher.out === dilithiumKeyHash;
+
     valid <== ageCheck.out;
 }
 
-component main {public [publicKey, ageCommitment, minAge]} = AgeVerify();
+component main {public [publicKey, ageCommitment, dilithiumKeyHash, minAge]} = HybridVoting();

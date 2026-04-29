@@ -22,9 +22,9 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Counter__factory>;
     getContractFactory(
-      name: "Voting",
+      name: "HybridVoting",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.Voting__factory>;
+    ): Promise<Contracts.HybridVoting__factory>;
 
     getContractAt(
       name: "Groth16Verifier",
@@ -37,10 +37,10 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Counter>;
     getContractAt(
-      name: "Voting",
+      name: "HybridVoting",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
-    ): Promise<Contracts.Voting>;
+    ): Promise<Contracts.HybridVoting>;
 
     deployContract(
       name: "Groth16Verifier",
@@ -51,9 +51,9 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Counter>;
     deployContract(
-      name: "Voting",
+      name: "HybridVoting",
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.Voting>;
+    ): Promise<Contracts.HybridVoting>;
 
     deployContract(
       name: "Groth16Verifier",
@@ -66,10 +66,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.Counter>;
     deployContract(
-      name: "Voting",
+      name: "HybridVoting",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.Voting>;
+    ): Promise<Contracts.HybridVoting>;
 
     // default types
     getContractFactory(

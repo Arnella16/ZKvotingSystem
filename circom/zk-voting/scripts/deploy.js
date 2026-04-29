@@ -11,7 +11,7 @@ async function main() {
 
   console.log("Deploying Voting...");
 
-  const Voting = await ethers.getContractFactory("Voting");
+  const Voting = await ethers.getContractFactory("HybridVoting");
   const voting = await Voting.deploy(verifier.target);
   await voting.waitForDeployment();
 

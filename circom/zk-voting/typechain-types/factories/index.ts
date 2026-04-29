@@ -2,5 +2,5 @@
 /* tslint:disable */
 /* eslint-disable */
 export * as ageVerifierSol from "./AgeVerifier.sol";
+export * as votingSol from "./Voting.sol";
 export { Counter__factory } from "./Counter__factory";
-export { Voting__factory } from "./Voting__factory";

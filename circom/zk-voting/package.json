@@ -13,6 +13,7 @@
     "circomlib": "^2.0.5",
     "circomlibjs": "^0.1.7",
     "cors": "^2.8.6",
+    "dilithium-crystals": "^1.0.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "ffjavascript": "^0.3.1",

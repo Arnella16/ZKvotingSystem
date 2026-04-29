@@ -3,10 +3,12 @@
 /* eslint-disable */
 import type * as ageVerifierSol from "./AgeVerifier.sol";
 export type { ageVerifierSol };
+import type * as votingSol from "./Voting.sol";
+export type { votingSol };
 export type { Counter } from "./Counter";
-export type { Voting } from "./Voting";
 export * as factories from "./factories";
 export type { Groth16Verifier } from "./AgeVerifier.sol/Groth16Verifier";
 export { Groth16Verifier__factory } from "./factories/AgeVerifier.sol/Groth16Verifier__factory";
 export { Counter__factory } from "./factories/Counter__factory";
-export { Voting__factory } from "./factories/Voting__factory";
+export type { HybridVoting } from "./Voting.sol/HybridVoting";
+export { HybridVoting__factory } from "./factories/Voting.sol/HybridVoting__factory";
