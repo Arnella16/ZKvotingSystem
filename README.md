@@ -5,9 +5,9 @@ A privacy-preserving voting system that combines **Zero-Knowledge Proofs** (Grot
 ## What This Project Does
 
 Voters can prove they are:
-- ✅ Above 18 years old
-- ✅ Have a valid identity (secret key)
-- ✅ Own a registered Dilithium post-quantum key
+- Above 18 years old
+- Have a valid identity (secret key)
+- Own a registered Dilithium post-quantum key
 
 **Without revealing** their actual age, secret key, or Dilithium private key to anyone.
 
@@ -111,11 +111,13 @@ node register.js 25
 
 Output:
 
+```bash
 Registering voter...
 Age: <age>
 Secret key: <secretKey>
-✅ Registration complete!
+Registration complete!
 dilithiumKeyHash: <dilithiumKeyHash>
+```
 
 ### Step 6: Register On-Chain
 
@@ -144,16 +146,18 @@ node vote.js Bob
 
 Output:
 
+```bash
 Voting for: Alice
 ─────────────────────────────
-✅ Voter keys loaded
-✅ Vote signed with Dilithium
+Voter keys loaded
+Vote signed with Dilithium
 Candidate: Alice
 Signature length: 4597 bytes
-✅ Dilithium signature valid? true
+Dilithium signature valid? true
 Generating ZK proof...
-✅ ZK proof generated
-✅ Vote package saved to vote_package.json
+ZK proof generated
+Vote package saved to vote_package.json
+```
 
 ### Step 8: Submit Vote On-Chain
 
