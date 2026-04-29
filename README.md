@@ -184,7 +184,7 @@ const nullifier = ethers.keccak256(ethers.toUtf8Bytes("voter1_alice"))
 // Cast vote
 const tx = await voting.castVote(a, b, c, pub, nullifier, "Alice")
 await tx.wait()
-console.log("✅ Vote cast!", tx.hash)
+console.log("Vote cast!", tx.hash)
 ```
 
 ### Step 9: Check Results
